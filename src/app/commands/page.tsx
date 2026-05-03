@@ -1,14 +1,35 @@
 'use client';
 
 export default function CommandsPage() {
-  const commands = [
-    { name: '!mob <name>', perm: 'Subs/VIPs', cooldown: '2m', icon: '🐉', cat: 'special', desc: 'Spawn whatever dragon you want. Name it, cause chaos with it.' },
-    { name: '!villager <msg>', perm: 'Subs', cooldown: '5m', icon: '🧑‍🌾', cat: 'special', desc: 'Make a villager say your message. He can\'t ignore you.' },
-    { name: '!potion', perm: 'Subs/VIPs', cooldown: '2m', icon: '✨', cat: 'mercy', desc: 'Give him a random buff. Could be strength, speed, or healing.' },
-    { name: '!freemob', perm: 'Everyone', cooldown: '5m', icon: '🦇', cat: 'chaos', desc: 'Spawn something random. Could be anything. Total luck.' },
-    { name: '!feedme', perm: 'Everyone', cooldown: '5m', icon: '🐄', cat: 'mercy', desc: 'Drop some food. Let him eat. Be nice for once.' },
-    { name: '!gamble', perm: 'Everyone', cooldown: '5m', icon: '🎰', cat: 'special', desc: '50/50 - either a mob spawns or he gets food.' },
-    { name: '!luckyhates', perm: 'Everyone', cooldown: '5m', icon: '⛏️', cat: 'chaos', desc: 'Dig the ground out from under him. Just chaos.' },
+  const premiumCommands = [
+    { name: '!mob <name>', perm: 'Subs/VIPs', cooldown: '5m', icon: '🐉', desc: 'Spawns a random mob from the pool and names it whatever you type.' },
+    { name: '!potion', perm: 'Subs/VIPs', cooldown: '5m', icon: '✨', desc: 'Give him a random buff. Could be strength, speed, or healing.' },
+    { name: '!giant', perm: 'Subs/VIPs', cooldown: '5m', icon: '👹', desc: 'Summon a giant hostile zombie. True dread.' },
+    { name: '!armageddon', perm: 'Subs/VIPs', cooldown: '5m', icon: '💀', desc: 'Multiple chaos events hit all at once. Complete destruction.' },
+    { name: '!control', perm: 'Subs/VIPs', cooldown: '5m', icon: '🎮', desc: 'Commands are confused. Controls go haywire.' },
+    { name: '!endgame', perm: 'Subs/VIPs', cooldown: '5m', icon: '👁️', desc: 'Endermen teleport you everywhere. Embrace the void.' },
+    { name: '!apocalypse', perm: 'Subs/VIPs', cooldown: '5m', icon: '💥', desc: 'Weather chaos + mobs + environment effects. The end is here.' },
+  ];
+
+  const subscriberCommands = [
+    { name: '!villager <msg>', perm: 'Subs', cooldown: '5m', icon: '🧑‍🌾', desc: 'Make a villager say your message. He cannot ignore you.' },
+    { name: '!swarm <mob>', perm: 'Subs', cooldown: '5m', icon: '👥', desc: 'Spawn multiple mobs at once. Controlled chaos.' },
+    { name: '!weather', perm: 'Subs', cooldown: '5m', icon: '⛈️', desc: 'Summon a thunderstorm. Lightning and rain incoming.' },
+    { name: '!cursed', perm: 'Subs', cooldown: '5m', icon: '🔥', desc: 'Multiple bad effects hit at once. Full curse.' },
+    { name: '!party', perm: 'Subs', cooldown: '5m', icon: '🎉', desc: 'Celebrate with rabbits, fireworks, and color effects.' },
+    { name: '!void', perm: 'Subs', cooldown: '5m', icon: '🌑', desc: 'Darkness falls. Teleport to the void.' },
+  ];
+
+  const everyoneCommands = [
+    { name: '!freemob', perm: 'Everyone', cooldown: '5m', icon: '🦇', desc: 'Spawn something random. Could be anything. Total luck.' },
+    { name: '!feedme', perm: 'Everyone', cooldown: '5m', icon: '🐄', desc: 'Summon a cow named after the chatter who used the command.' },
+    { name: '!gamble', perm: 'Everyone', cooldown: '5m', icon: '🎰', desc: '50/50: either a mob spawns or he gets food.' },
+    { name: '!luckyhates', perm: 'Everyone', cooldown: '5m', icon: '⛏️', desc: 'Dig the ground out from under him. Just chaos.' },
+    { name: '!slowfall', perm: 'Everyone', cooldown: '5m', icon: '☁️', desc: 'Float gently to the ground. Briefly.' },
+    { name: '!disco', perm: 'Everyone', cooldown: '5m', icon: '🎆', desc: 'Night vision + glowing effect. Dance mode activated.' },
+    { name: '!spin', perm: 'Everyone', cooldown: '5m', icon: '🌀', desc: 'Spins you rapidly. Get dizzy.' },
+    { name: '!shield', perm: 'Everyone', cooldown: '5m', icon: '🛡️', desc: 'Temporary protection. Resistance or damage reduction effects.' },
+    { name: '!confusion', perm: 'Everyone', cooldown: '5m', icon: '🤪', desc: 'Your senses betray you. Nausea, confusion, blindness incoming.' },
   ];
 
   return (
@@ -154,17 +175,21 @@ export default function CommandsPage() {
             <h1 className="minecraft-font text-6xl md:text-8xl mb-4 glow-title text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-300 to-purple-400">
               COMMAND THE CHAOS
             </h1>
-            <p className="text-xl md:text-2xl text-cyan-200/80 mb-8 font-light tracking-wide max-w-2xl">
-              You control what happens in Stevan's world. Type a command, watch it happen instantly. That's it.
+            <p className="text-xl md:text-2xl text-cyan-200/80 mb-8 font-light tracking-wide max-w-3xl">
+              22 unique viewer commands to manipulate, troll, or help Stevan. Type a command, watch it happen instantly. That's it.
             </p>
-            <div className="flex flex-col md:flex-row gap-4">
-              <div className="premium-card px-8 py-4 rounded-lg border-cyan-500/30 hover:border-cyan-400/60">
-                <p className="minecraft-font text-lg text-cyan-300">⚡ It happens instantly</p>
-                <p className="text-sm text-cyan-200/60 mt-1">No delay, no waiting</p>
+            <div className="grid md:grid-cols-3 gap-4 max-w-3xl">
+              <div className="premium-card px-6 py-3 rounded-lg border-cyan-500/30">
+                <p className="minecraft-font text-sm text-cyan-300">9 EVERYONE</p>
+                <p className="text-xs text-cyan-200/60 mt-1">No requirements</p>
               </div>
-              <div className="premium-card px-8 py-4 rounded-lg border-violet-500/30 hover:border-violet-400/60">
-                <p className="minecraft-font text-lg text-violet-300">🔥 Stuff gets wild</p>
-                <p className="text-sm text-violet-200/60 mt-1">Things go sideways fast</p>
+              <div className="premium-card px-6 py-3 rounded-lg border-blue-500/30">
+                <p className="minecraft-font text-sm text-blue-300">6 SUBS</p>
+                <p className="text-xs text-blue-200/60 mt-1">Subscriber only</p>
+              </div>
+              <div className="premium-card px-6 py-3 rounded-lg border-purple-500/30">
+                <p className="minecraft-font text-sm text-purple-300">7 VIP/MOD</p>
+                <p className="text-xs text-purple-200/60 mt-1">Premium access</p>
               </div>
             </div>
           </div>
@@ -176,8 +201,8 @@ export default function CommandsPage() {
               <p className="text-cyan-200/60 text-sm md:text-base mt-3 tracking-widest uppercase font-semibold">Exclusive commands for subscribers & VIPs</p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
-              {commands.slice(0, 3).map((cmd, i) => (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {premiumCommands.map((cmd, i) => (
                 <div key={i} className="premium-card rounded-2xl p-8 group border-cyan-500/20 hover:border-cyan-400/40">
                   <div className={`text-6xl md:text-7xl mb-6 bounce-premium`}>{cmd.icon}</div>
                   <h3 className="minecraft-font text-2xl md:text-3xl mb-2 text-white">{cmd.name}</h3>
@@ -192,6 +217,29 @@ export default function CommandsPage() {
             </div>
           </div>
 
+          {/* Subscriber Section */}
+          <div className="mb-40">
+            <div className="section-header">
+              <h2 className="minecraft-font text-5xl md:text-6xl text-blue-300">SUBSCRIBER TIER</h2>
+              <p className="text-blue-200/60 text-sm md:text-base mt-3 tracking-widest uppercase font-semibold">Medium chaos for subscribers</p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {subscriberCommands.map((cmd, i) => (
+                <div key={i} className="premium-card rounded-2xl p-8 group border-blue-500/20 hover:border-blue-400/40">
+                  <div className={`text-6xl md:text-7xl mb-6 bounce-premium`}>{cmd.icon}</div>
+                  <h3 className="minecraft-font text-2xl md:text-3xl mb-2 text-white">{cmd.name}</h3>
+                  <p className="text-blue-200 font-semibold text-sm tracking-wide mb-3">{cmd.perm}</p>
+                  <p className="text-blue-100/80 text-sm leading-relaxed mb-6">{cmd.desc}</p>
+                  <div className="pt-4 border-t border-blue-500/20 flex justify-between items-center">
+                    <span className="text-xs text-blue-300/60 uppercase tracking-widest">Cooldown</span>
+                    <span className="text-lg font-bold text-blue-300">{cmd.cooldown}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
           {/* Everyone Section */}
           <div className="mb-40">
             <div className="section-header">
@@ -199,8 +247,8 @@ export default function CommandsPage() {
               <p className="text-emerald-200/60 text-sm md:text-base mt-3 tracking-widest uppercase font-semibold">Available to all viewers</p>
             </div>
             
-            <div className="grid md:grid-cols-2 gap-8">
-              {commands.slice(3).map((cmd, i) => (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {everyoneCommands.map((cmd, i) => (
                 <div key={i} className="premium-card rounded-2xl p-8 group border-emerald-500/20 hover:border-emerald-400/40">
                   <div className={`text-6xl md:text-7xl mb-6 bounce-premium`}>{cmd.icon}</div>
                   <h3 className="minecraft-font text-2xl md:text-3xl mb-2 text-white">{cmd.name}</h3>
